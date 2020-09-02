@@ -15,26 +15,26 @@
             </div>
         </div>
         <div class='table-respnosive'>
-            <table class='table' 
+            <table class='table'
                    *ngIf='products && products.length > 0' >
                 <thead>
                     <th>
                         <button class='btn btn-primary' (click)='toggleImage()'>
-                           {{showImage ? 'Hide Image' : 'Show Image'}} 
+                           {{showImage ? 'Hide Image' : 'Show Image'}}
                         </button>
                     </th>
-                    <th>Product</th>                       
-                    <th>Code</th>                       
-                    <th>Available</th>                       
-                    <th>Price</th>                       
-                    <th>5 Star Rating</th>                       
+                    <th>Product</th>
+                    <th>Code</th>
+                    <th>Available</th>
+                    <th>Price</th>
+                    <th>5 Star Rating</th>
                 </thead>
                 <tbody>
                 <tr *ngFor='let product of filteredProducts'>
                     <td>
                         <img *ngIf='showImage'
-                            [src]='product.imageUrl' 
-                            [title]='product.productName|lowercase' 
+                            [src]='product.imageUrl'
+                            [title]='product.productName|lowercase'
                             [style.width.px]='imageWidth'
                             [style.margin.px]='imageMargin'>
 
@@ -43,8 +43,8 @@
                     <td>{{product.productCode | lowercase | convertToSpaces:'-'}}</td>
                     <td>{{product.releaseDate}}</td>
                     <td>{{product.price|currency:'ZAR':'symbol':'1.2-2'}}</td>
-                    <td>{{product.starRating}}</td>
-                </tr>  
+                  <td><pm-star [rating]="product.starRating"></pm-star></td>
+                </tr>
                 </tbody>
             </table>
         </div>
