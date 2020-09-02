@@ -7,9 +7,10 @@ import { IProduct } from './product'
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  private _listFilter: string = 'cart';
+  private _listFilter: string;
   ngOnInit(): void {
    this.filteredProducts = this.products;
+   this.listFilter = 'cart';
   }
   pageTitle: string  = 'Product Listing';
   imageWidth: number = 50;
@@ -54,7 +55,7 @@ export class ProductListComponent implements OnInit {
     console.log("Doing filter using: " + this._listFilter);
     if (this._listFilter)
     {
-      this.filteredProducts = this.products.filter(x => x.productName.toLocaleLowerCase().startsWith(this._listFilter.toLowerCase()));
+      this.filteredProducts = this.products.filter(x => x.productName.toLocaleLowerCase().indexOf(this._listFilter.toLocaleLowerCase()) !== -1);
     } else
     {
       this.filteredProducts = this.products;
