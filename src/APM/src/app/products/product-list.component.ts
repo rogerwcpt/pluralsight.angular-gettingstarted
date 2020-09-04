@@ -3,7 +3,7 @@ import { IProduct } from './product'
 import {ProductService} from "./product.service";
 
 @Component({
-  selector: 'pm-products',
+  selector: 'pm-products', // Not required if you don't nest, and rather are going to navigate, then you don't need this
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
@@ -14,9 +14,14 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = this._productService.getProducts();
-
-   this.filteredProducts = this.products;
+    // Observe result from product service observable by subscribing
+    this._productService.getProducts().subscribe({
+      next: result => {
+        this.products = result;
+        this.filteredProducts = this.products;
+      },
+      error: err => console.error((err))
+    });
   }
 
   pageTitle: string  = 'Product Listing';
@@ -30,6 +35,7 @@ export class ProductListComponent implements OnInit {
   get listFilter() {
     return this._listFilter;
   }
+
   filteredProducts: IProduct[];
   products: IProduct[];
 
