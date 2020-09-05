@@ -14,7 +14,7 @@
                 <h5>Filtered by: {{listFilter}}</h5>
             </div>
         </div>
-        <div class='table-respnosive'>
+        <div class='table-responsive'>
             <table class='table'
                    *ngIf='products && products.length > 0' >
                 <thead>
@@ -39,7 +39,7 @@
                             [style.margin.px]='imageMargin'>
 
                     </td>
-                    <td>{{product.productName}}</td>
+                    <td><a  [routerLink]="['/products/', product.productId]">{{product.productName}}</a></td>
                     <td>{{product.productCode | lowercase | convertToSpaces:'-'}}</td>
                     <td>{{product.releaseDate}}</td>
                     <td>{{product.price|currency:'ZAR':'symbol':'1.2-2'}}</td>
@@ -49,4 +49,5 @@
             </table>
         </div>
     </div>
+    <router-outlet></router-outlet>
 </div>
