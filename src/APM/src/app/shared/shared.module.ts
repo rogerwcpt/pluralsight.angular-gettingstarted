@@ -14,7 +14,9 @@ import { FormsModule } from "@angular/forms";
   ],
   exports: [
     FormsModule,
+    ConvertToSpacesPipe,
     StarComponent,
+
     CommonModule
   ]
 })
