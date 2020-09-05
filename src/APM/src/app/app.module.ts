@@ -11,15 +11,16 @@ import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from "./home/welcome.component";
 import { RouterModule } from "@angular/router";
 import {ProductDetailGuard} from "./products/product-detail-gaurd";
+import { ProductModule } from './products/product.module';
 //import {ProductService} from "./products/product.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
+    ProductDetailComponent,
     ConvertToSpacesPipe,
     StarComponent,
-    ProductDetailComponent,
     WelcomeComponent,
   ],
   imports: [
@@ -32,9 +33,10 @@ import {ProductDetailGuard} from "./products/product-detail-gaurd";
       { path: 'welcome', component: WelcomeComponent},
       { path: '', redirectTo: 'welcome', pathMatch: 'full'},
       { path: '**',  redirectTo: 'welcome', pathMatch: 'full'},
-      ])
+      ]),
+    ProductModule
   ],
-  bootstrap: [AppComponent],
-  // providers: [ProductService] Old Way of registering service
+  bootstrap: [AppComponent] // this is the only place where bootstrap array is used.
+  // providers: [ProductService] Old Way of registering service, rather use @Injectable at source
 })
 export class AppModule { }
