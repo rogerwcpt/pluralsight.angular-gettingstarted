@@ -6,6 +6,7 @@ import { WelcomeComponent } from "./home/welcome.component";
 import { RouterModule } from "@angular/router";
 import { ProductModule } from './products/product.module';
 import { BrowserModule } from "@angular/platform-browser";
+import { SharedModule } from './shared/shared.module';
 //import {ProductService} from "./products/product.service";
 
 @NgModule({
@@ -21,7 +22,8 @@ import { BrowserModule } from "@angular/platform-browser";
       { path: '', redirectTo: 'welcome', pathMatch: 'full'},
       { path: '**',  redirectTo: 'welcome', pathMatch: 'full'},
       ]),
-    ProductModule
+    ProductModule,
+    SharedModule
   ],
   bootstrap: [AppComponent] // this is the only place where bootstrap array is used.
   // providers: [ProductService] Old Way of registering service, rather use @Injectable at source

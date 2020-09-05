@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { IProduct } from './product'
-import {ProductService} from "./product.service";
+import { ProductService } from "./product.service";
 
 @Component({
   selector: 'pm-products', // Not required if you don't nest, and rather are going to navigate, then you don't need this
